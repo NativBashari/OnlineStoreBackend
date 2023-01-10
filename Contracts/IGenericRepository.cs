@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Contracts
 {
-    internal interface IGenericRepository
+    public interface IGenericRepository<T> where T : class
     {
+        IEnumerable<T> GetAll();
+        T Get(int id);
+        void Create(T obj);
+        void Update (T obj);
+        void Delete(int id);
     }
 }

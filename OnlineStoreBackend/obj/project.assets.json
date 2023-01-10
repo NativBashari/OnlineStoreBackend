@@ -1231,6 +1231,19 @@
           }
         }
       },
+      "Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Contracts.dll": {}
+        }
+      },
       "Entities/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1253,6 +1266,20 @@
         },
         "runtime": {
           "bin/placeholder/Models.dll": {}
+        }
+      },
+      "RepositoryPattern/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Contracts": "1.0.0",
+          "Entities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/RepositoryPattern.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/RepositoryPattern.dll": {}
         }
       }
     }
@@ -3700,6 +3727,11 @@
         "version.txt"
       ]
     },
+    "Contracts/1.0.0": {
+      "type": "project",
+      "path": "../Contracts/Contracts.csproj",
+      "msbuildProject": "../Contracts/Contracts.csproj"
+    },
     "Entities/1.0.0": {
       "type": "project",
       "path": "../Entities/Entities.csproj",
@@ -3709,12 +3741,19 @@
       "type": "project",
       "path": "../Models/Models.csproj",
       "msbuildProject": "../Models/Models.csproj"
+    },
+    "RepositoryPattern/1.0.0": {
+      "type": "project",
+      "path": "../RepositoryPattern/RepositoryPattern.csproj",
+      "msbuildProject": "../RepositoryPattern/RepositoryPattern.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Contracts >= 1.0.0",
       "Entities >= 1.0.0",
       "Microsoft.EntityFrameworkCore.Design >= 7.0.1",
+      "RepositoryPattern >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.2.3"
     ]
   },
@@ -3750,8 +3789,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Contracts\\Contracts.csproj": {
+              "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Contracts\\Contracts.csproj"
+            },
             "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Entities\\Entities.csproj": {
               "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Entities\\Entities.csproj"
+            },
+            "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\RepositoryPattern\\RepositoryPattern.csproj": {
+              "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\RepositoryPattern\\RepositoryPattern.csproj"
             }
           }
         }

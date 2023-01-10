@@ -9,6 +9,7 @@
         public Inventory? Inventory { get; set; }
         public double Price { get; set; }
         public Discount? Discount { get; set; }
+        public string? Image { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime ModifiedAt { get; set; }
 

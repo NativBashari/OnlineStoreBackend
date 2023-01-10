@@ -5,35 +5,20 @@ namespace RepositoryPattern
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class 
     {
-        protected readonly OnlineStoreDbContext
-        public void Complete()
+        protected readonly OnlineStoreDbContext dbContext;
+        public GenericRepository(OnlineStoreDbContext dbContext)
         {
-            throw new NotImplementedException();
+            this.dbContext = dbContext;
         }
 
-        public void Create(T obj)
-        {
-            throw new NotImplementedException();
-        }
+        public void Create(T obj) => dbContext.Set<T>().Add(obj);
 
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public void Delete(int id) => dbContext.Set<T>().Remove(Get(id));
 
-        public T Get(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public T Get(int id) => dbContext.Set<T>().Find(id)!;
 
-        public IEnumerable<T> GetAll()
-        {
-            throw new NotImplementedException();
-        }
+        public IEnumerable<T> GetAll() => dbContext.Set<T>().ToList();
 
-        public void Update(T obj)
-        {
-            throw new NotImplementedException();
-        }
+        public void Update(T obj) => dbContext.Set<T>().Update(obj);
     }
 }

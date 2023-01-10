@@ -120,6 +120,9 @@ namespace Entities.Migrations
                     b.Property<int?>("DiscountId")
                         .HasColumnType("int");
 
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("InventoryId")
                         .HasColumnType("int");
 
