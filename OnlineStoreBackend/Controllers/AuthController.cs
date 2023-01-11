@@ -25,5 +25,13 @@ namespace OnlineStoreBackend.Controllers
             if (response == 0) return BadRequest();
             return Ok(response);
         }
+
+        [HttpPost("Login")]
+        public IActionResult Login(UserLoginDto request)
+        {
+            var response = authRepository.Login(request.Username, request.Password);
+            if (response == "") return BadRequest();
+            return Ok(response);
+        }
     }
 }

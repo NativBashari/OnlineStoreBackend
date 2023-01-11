@@ -21,7 +21,16 @@ namespace RepositoryPattern.Auth
 
         public string Login(string userName, string password)
         {
-            throw new NotImplementedException();
+            var user = dbContext.Users.FirstOrDefault(u => u.Username!.ToLower().Equals(userName.ToLower()));
+            if(user == null)
+            {
+                return string.Empty;
+            }
+            else if(!VerifyPasswordHash(password, user.PasswordHash!, user.PasswordSalt!))
+            {
+                return string.Empty;
+            }
+                return user.Id.ToString();
         }
 
         public int Register(User user, string password)
@@ -50,6 +59,15 @@ namespace RepositoryPattern.Auth
             {
                 passwordSalt = hmac.Key;
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+            }
+        }
+
+        private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
+        {
+            using(var hmac= new HMACSHA512(passwordSalt))
+            {
+                var computeHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return computeHash.SequenceEqual(passwordHash);
             }
         }
     }
