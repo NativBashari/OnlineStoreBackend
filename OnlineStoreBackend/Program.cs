@@ -1,6 +1,8 @@
 using Contracts;
+using Contracts.RepositoriesContracts.Auth;
 using Entities;
 using RepositoryPattern;
+using RepositoryPattern.Auth;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<OnlineStoreDbContext>();
 builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
+builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddMvc().AddNewtonsoftJson(options =>
 {
     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Models.ProductsManagement;
+using Models.UserManagement;
 
 namespace Entities
 {
@@ -11,6 +12,9 @@ namespace Entities
         public DbSet<Inventory> Inventories { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Size> Sizes { get; set; }
+
+        //USERS MANAGEMENT
+        public DbSet<User> Users { get; set; }
 
         public OnlineStoreDbContext()
         {
