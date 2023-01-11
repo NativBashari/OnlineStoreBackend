@@ -84,3 +84,13 @@ C:\Users\nativ\Desktop\OnlineStoreBackend\OnlineStoreBackend\bin\Debug\net6.0\En
 C:\Users\nativ\Desktop\OnlineStoreBackend\OnlineStoreBackend\bin\Debug\net6.0\Models.dll
 C:\Users\nativ\Desktop\OnlineStoreBackend\OnlineStoreBackend\bin\Debug\net6.0\Entities.pdb
 C:\Users\nativ\Desktop\OnlineStoreBackend\OnlineStoreBackend\bin\Debug\net6.0\Models.pdb
+C:\Users\nativ\Desktop\OnlineStoreBackend\OnlineStoreBackend\bin\Debug\net6.0\Contracts.dll
+C:\Users\nativ\Desktop\OnlineStoreBackend\OnlineStoreBackend\bin\Debug\net6.0\RepositoryPattern.dll
+C:\Users\nativ\Desktop\OnlineStoreBackend\OnlineStoreBackend\bin\Debug\net6.0\Contracts.pdb
+C:\Users\nativ\Desktop\OnlineStoreBackend\OnlineStoreBackend\bin\Debug\net6.0\RepositoryPattern.pdb
+C:\Users\nativ\Desktop\OnlineStoreBackend\OnlineStoreBackend\bin\Debug\net6.0\Castle.Core.dll
+C:\Users\nativ\Desktop\OnlineStoreBackend\OnlineStoreBackend\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Proxies.dll
+C:\Users\nativ\Desktop\OnlineStoreBackend\OnlineStoreBackend\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\nativ\Desktop\OnlineStoreBackend\OnlineStoreBackend\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\nativ\Desktop\OnlineStoreBackend\OnlineStoreBackend\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\nativ\Desktop\OnlineStoreBackend\OnlineStoreBackend\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

@@ -17,7 +17,10 @@ namespace Entities.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.1")
+                .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -34,6 +37,9 @@ namespace Entities.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ModifiedAt")
@@ -146,10 +152,31 @@ namespace Entities.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("Models.ProductsManagement.Size", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Sizes");
+                });
+
             modelBuilder.Entity("Models.ProductsManagement.Product", b =>
                 {
                     b.HasOne("Models.ProductsManagement.Category", "Category")
-                        .WithMany()
+                        .WithMany("Products")
                         .HasForeignKey("CategoryId");
 
                     b.HasOne("Models.ProductsManagement.Discount", "Discount")
@@ -165,6 +192,23 @@ namespace Entities.Migrations
                     b.Navigation("Discount");
 
                     b.Navigation("Inventory");
+                });
+
+            modelBuilder.Entity("Models.ProductsManagement.Size", b =>
+                {
+                    b.HasOne("Models.ProductsManagement.Product", null)
+                        .WithMany("Sizes")
+                        .HasForeignKey("ProductId");
+                });
+
+            modelBuilder.Entity("Models.ProductsManagement.Category", b =>
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Models.ProductsManagement.Product", b =>
+                {
+                    b.Navigation("Sizes");
                 });
 #pragma warning restore 612, 618
         }

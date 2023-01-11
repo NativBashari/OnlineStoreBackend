@@ -14,5 +14,7 @@ namespace RepositoryPattern.ProductsManagementRepository
         public ProductRepository(OnlineStoreDbContext dbContext) : base(dbContext)
         {
         }
+
+        public IEnumerable<Product> GetProductsFromCategory(int categoryId) => dbContext.Products.Where(p => p.Category!.Id == categoryId);
     }
 }

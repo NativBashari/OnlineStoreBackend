@@ -9,5 +9,6 @@ namespace Contracts.RepositoriesContracts.ProductsManagementRepositoriesContract
 {
     public interface ICategoryRepository: IGenericRepository<Category>
     {
+
     }
 }
