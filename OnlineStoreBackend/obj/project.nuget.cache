@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "18MmseAgRixrD6R/nC39MlCTL3lIZlTb3AXZP4+JhDaiRJnolfxVeaZmar8BWWsh95eHPHG1UnTYWq3XS1Mlww==",
+  "dgSpecHash": "8ERiOO94h3vpho1h8NmMV5LLrj5XTYvzzWjLVZqXcdB9Y2gCibQX26e6PdtJrb7FOm402W5LjQROLuUYk2i4Aw==",
   "success": true,
   "projectFilePath": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\OnlineStoreBackend\\OnlineStoreBackend.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\nativ\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\nativ\\.nuget\\packages\\castle.core\\5.1.0\\castle.core.5.1.0.nupkg.sha512",
     "C:\\Users\\nativ\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\nativ\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.13\\microsoft.aspnetcore.authentication.jwtbearer.6.0.13.nupkg.sha512",
     "C:\\Users\\nativ\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.12\\microsoft.aspnetcore.jsonpatch.6.0.12.nupkg.sha512",
     "C:\\Users\\nativ\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\6.0.12\\microsoft.aspnetcore.mvc.newtonsoftjson.6.0.12.nupkg.sha512",
     "C:\\Users\\nativ\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",

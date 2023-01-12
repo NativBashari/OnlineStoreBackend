@@ -10,10 +10,12 @@ namespace OnlineStoreBackend.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly IUnitOfWork unitOfWork;
+        private readonly IConfiguration configuration;
 
         public CategoriesController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
+            this.configuration = configuration;
         }
 
         [HttpGet]

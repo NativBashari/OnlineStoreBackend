@@ -1,9 +1,13 @@
-﻿using Contracts.RepositoriesContracts.Auth;
+﻿using Castle.Core.Configuration;
+using Contracts.RepositoriesContracts.Auth;
 using Entities;
+using Microsoft.IdentityModel.Tokens;
 using Models.UserManagement;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +17,7 @@ namespace RepositoryPattern.Auth
     public class AuthRepository : IAuthRepository
     {
         private readonly OnlineStoreDbContext dbContext;
+        const string KEY = "my seceret json key";
 
         public AuthRepository(OnlineStoreDbContext dbContext)
         {
@@ -30,7 +35,7 @@ namespace RepositoryPattern.Auth
             {
                 return string.Empty;
             }
-                return user.Id.ToString();
+                return CreateToken(user);
         }
 
         public int Register(User user, string password)
@@ -47,7 +52,7 @@ namespace RepositoryPattern.Auth
 
         public bool UserExist(string username)
         {
-            if(dbContext.Users.Any(u => u.Username.ToLower() == username.ToLower()))
+            if(dbContext.Users.Any(u => u.Username!.ToLower() == username.ToLower()))
             {
                 return true;
             }
@@ -69,6 +74,26 @@ namespace RepositoryPattern.Auth
                 var computeHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
                 return computeHash.SequenceEqual(passwordHash);
             }
+        }
+
+        private string CreateToken(User user)
+        {
+            List<Claim> claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Name, user.Username!)
+            };
+            SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KEY));
+            SigningCredentials creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+            SecurityTokenDescriptor tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = DateTime.Now.AddDays(1),
+                SigningCredentials = creds
+            };
+            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+            SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
         }
     }
 }
