@@ -2,6 +2,7 @@
 using Contracts.RepositoriesContracts.Auth;
 using Entities;
 using Microsoft.IdentityModel.Tokens;
+using Models.DTO;
 using Models.UserManagement;
 using System;
 using System.Collections.Generic;
@@ -24,18 +25,18 @@ namespace RepositoryPattern.Auth
             this.dbContext = dbContext;
         }
 
-        public string Login(string userName, string password)
+        public AuthenticatedResponse Login(string userName, string password)
         {
             var user = dbContext.Users.FirstOrDefault(u => u.Username!.ToLower().Equals(userName.ToLower()));
             if(user == null)
             {
-                return string.Empty;
+                return new AuthenticatedResponse { IsSuccess = false, Message= "Username incorrect" };
             }
             else if(!VerifyPasswordHash(password, user.PasswordHash!, user.PasswordSalt!))
             {
-                return string.Empty;
+                return new AuthenticatedResponse { IsSuccess = false, Message = "Password incorrect" };
             }
-                return CreateToken(user);
+                return new AuthenticatedResponse { IsSuccess = true, Message = "Authenticated seccusfully", Token = CreateToken(user) };
         }
 
         public int Register(User user, string password)
@@ -81,7 +82,8 @@ namespace RepositoryPattern.Auth
             List<Claim> claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username!)
+                new Claim(ClaimTypes.Name, user.Username!),
+                new Claim(ClaimTypes.Role, user.IsAdmin ? "Admin" : "User")
             };
             SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KEY));
             SigningCredentials creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
@@ -94,6 +96,12 @@ namespace RepositoryPattern.Auth
             JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
             SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
+        }
+
+        public bool IsAdmin(int id)
+        {
+            var user = dbContext.Users.FirstOrDefault(u => u.Id == id);
+            return user!.IsAdmin;
         }
     }
 }

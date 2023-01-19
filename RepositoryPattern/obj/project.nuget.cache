@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "c/Yg8mTqZQ5FxQAp1bGA4fXlgpg7Qk3QCV5EYr9SHK+wlFU1jMFgQH/VrebDFgGag83g64WcKeXfcKJGAFF28Q==",
+  "dgSpecHash": "aJXlx4Nkm7UVOaHF+h+8DupwPrldQJurCpr/4GtvJF9BJUqdC4F/B9F0L8FJbIQqFUKTGv4Ez4jQ+S98M+7Wag==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\RepositoryPattern\\RepositoryPattern.csproj",
+  "projectFilePath": "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\RepositoryPattern\\RepositoryPattern.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nativ\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\nativ\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

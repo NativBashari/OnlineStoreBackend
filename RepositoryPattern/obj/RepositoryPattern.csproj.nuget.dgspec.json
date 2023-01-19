@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\RepositoryPattern\\RepositoryPattern.csproj": {}
+    "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\RepositoryPattern\\RepositoryPattern.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Contracts\\Contracts.csproj": {
+    "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Contracts\\Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Contracts\\Contracts.csproj",
+        "projectUniqueName": "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Contracts\\Contracts.csproj",
         "projectName": "Contracts",
-        "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Contracts\\Contracts.csproj",
+        "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Contracts\\Contracts.csproj",
         "packagesPath": "C:\\Users\\nativ\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Contracts\\obj\\",
+        "outputPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Contracts\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Models\\Models.csproj": {
-                "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Models\\Models.csproj"
+              "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Models\\Models.csproj": {
+                "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Models\\Models.csproj"
               }
             }
           }
@@ -67,14 +67,14 @@
         }
       }
     },
-    "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Entities\\Entities.csproj": {
+    "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Entities\\Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Entities\\Entities.csproj",
+        "projectUniqueName": "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Entities\\Entities.csproj",
         "projectName": "Entities",
-        "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Entities\\Entities.csproj",
+        "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Entities\\Entities.csproj",
         "packagesPath": "C:\\Users\\nativ\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Entities\\obj\\",
+        "outputPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -95,8 +95,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Models\\Models.csproj": {
-                "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Models\\Models.csproj"
+              "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Models\\Models.csproj": {
+                "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Models\\Models.csproj"
               }
             }
           }
@@ -146,14 +146,14 @@
         }
       }
     },
-    "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Models\\Models.csproj": {
+    "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Models\\Models.csproj",
+        "projectUniqueName": "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Models\\Models.csproj",
+        "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Models\\Models.csproj",
         "packagesPath": "C:\\Users\\nativ\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Models\\obj\\",
+        "outputPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -205,14 +205,14 @@
         }
       }
     },
-    "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\RepositoryPattern\\RepositoryPattern.csproj": {
+    "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\RepositoryPattern\\RepositoryPattern.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\RepositoryPattern\\RepositoryPattern.csproj",
+        "projectUniqueName": "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\RepositoryPattern\\RepositoryPattern.csproj",
         "projectName": "RepositoryPattern",
-        "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\RepositoryPattern\\RepositoryPattern.csproj",
+        "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\RepositoryPattern\\RepositoryPattern.csproj",
         "packagesPath": "C:\\Users\\nativ\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\RepositoryPattern\\obj\\",
+        "outputPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\RepositoryPattern\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -233,11 +233,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Contracts\\Contracts.csproj": {
-                "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Contracts\\Contracts.csproj"
+              "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Contracts\\Contracts.csproj": {
+                "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Contracts\\Contracts.csproj"
               },
-              "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Entities\\Entities.csproj": {
-                "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreBackend\\Entities\\Entities.csproj"
+              "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Entities\\Entities.csproj": {
+                "projectPath": "C:\\Users\\nativ\\Desktop\\OnlineStoreProject\\OnlineStoreBackend\\Entities\\Entities.csproj"
               }
             }
           }

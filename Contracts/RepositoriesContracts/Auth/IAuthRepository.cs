@@ -1,4 +1,5 @@
-﻿using Models.UserManagement;
+﻿using Models.DTO;
+using Models.UserManagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,9 @@ namespace Contracts.RepositoriesContracts.Auth
     public interface IAuthRepository
     {
         int Register(User user, string password);
-        string Login(string userName, string password);
+        AuthenticatedResponse Login(string userName, string password);
         bool UserExist(string username);
+        bool IsAdmin(int id);
 
     }
 }

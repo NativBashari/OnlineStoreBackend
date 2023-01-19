@@ -1,21 +1,21 @@
 ﻿using Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models.ProductsManagement;
 
 namespace OnlineStoreBackend.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase
     {
         private readonly IUnitOfWork unitOfWork;
-        private readonly IConfiguration configuration;
 
         public CategoriesController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
-            this.configuration = configuration;
         }
 
         [HttpGet]
@@ -31,6 +31,7 @@ namespace OnlineStoreBackend.Controllers
             if (category == null) return NotFound();
             return Ok(category);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Post(Category category)
         {
@@ -42,6 +43,7 @@ namespace OnlineStoreBackend.Controllers
             }
             return BadRequest();
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public IActionResult Update(Category category)
         {
@@ -56,6 +58,8 @@ namespace OnlineStoreBackend.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            if (!User.IsInRole("Admin")) return Unauthorized(); //Correct!!
+
             unitOfWork.CategoryRepository.Delete(id);
             unitOfWork.Complete();
             return NoContent();

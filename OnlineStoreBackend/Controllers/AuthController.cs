@@ -30,8 +30,14 @@ namespace OnlineStoreBackend.Controllers
         public IActionResult Login(UserLoginDto request)
         {
             var response = authRepository.Login(request.Username, request.Password);
-            if (response == "") return BadRequest();
+            if (!response.IsSuccess) return BadRequest(response);
             return Ok(response);
+        }
+        [HttpGet("IsAdmin/{id}")]
+        public IActionResult IsAdmin(int id)
+        {
+           var res =  authRepository.IsAdmin(id);
+           return Ok(res);
         }
     }
 }

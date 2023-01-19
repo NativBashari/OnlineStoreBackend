@@ -15,6 +15,7 @@ namespace Entities
 
         //USERS MANAGEMENT
         public DbSet<User> Users { get; set; }
+        public DbSet<UserAdress> UserAdresses { get; set; }
 
         public OnlineStoreDbContext()
         {

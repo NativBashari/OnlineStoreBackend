@@ -1,10 +1,12 @@
 ﻿using Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models.ProductsManagement;
 
 namespace OnlineStoreBackend.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class DiscountsController : ControllerBase
@@ -29,6 +31,7 @@ namespace OnlineStoreBackend.Controllers
             if(discount == null) return NotFound();
             return Ok(discount);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Post(Discount discount)
         {
@@ -40,6 +43,7 @@ namespace OnlineStoreBackend.Controllers
             }
             return BadRequest();
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public IActionResult Update(Discount discount)
         {
@@ -51,6 +55,7 @@ namespace OnlineStoreBackend.Controllers
             }
             return BadRequest();
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

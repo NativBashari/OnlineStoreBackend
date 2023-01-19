@@ -46,6 +46,7 @@ namespace Entities.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -205,12 +206,45 @@ namespace Entities.Migrations
                     b.Property<string>("Telephone")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("UserAdressId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("UserAdressId");
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Models.UserManagement.UserAdress", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AdressLine1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AdressLine2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserAdresses");
                 });
 
             modelBuilder.Entity("Models.ProductsManagement.Product", b =>
@@ -239,6 +273,15 @@ namespace Entities.Migrations
                     b.HasOne("Models.ProductsManagement.Product", null)
                         .WithMany("Sizes")
                         .HasForeignKey("ProductId");
+                });
+
+            modelBuilder.Entity("Models.UserManagement.User", b =>
+                {
+                    b.HasOne("Models.UserManagement.UserAdress", "UserAdress")
+                        .WithMany()
+                        .HasForeignKey("UserAdressId");
+
+                    b.Navigation("UserAdress");
                 });
 
             modelBuilder.Entity("Models.ProductsManagement.Category", b =>
