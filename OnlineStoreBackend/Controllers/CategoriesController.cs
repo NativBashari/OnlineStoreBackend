@@ -43,10 +43,10 @@ namespace OnlineStoreBackend.Controllers
             }
             return BadRequest();
         }
-        [Authorize(Roles = "Admin")]
         [HttpPut]
         public IActionResult Update(Category category)
         {
+            if (!User.IsInRole("Admin")) return Unauthorized();
             if (ModelState.IsValid)
             {
                 unitOfWork.CategoryRepository.Update(category);

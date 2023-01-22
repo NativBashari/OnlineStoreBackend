@@ -43,10 +43,10 @@ namespace OnlineStoreBackend.Controllers
             }
             return BadRequest();
         }
-        [Authorize(Roles = "Admin")]
         [HttpPut]
         public IActionResult Update(Discount discount)
         {
+            if (!User.IsInRole("Admin")) return Unauthorized();
             if (ModelState.IsValid)
             {
                 unitOfWork.DiscountRepository.Update(discount);
@@ -55,10 +55,10 @@ namespace OnlineStoreBackend.Controllers
             }
             return BadRequest();
         }
-        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            if (!User.IsInRole("Admin")) return Unauthorized(); 
             unitOfWork.DiscountRepository.Delete(id);
             unitOfWork.Complete();
             return NoContent();
