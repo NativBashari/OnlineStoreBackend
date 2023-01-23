@@ -33,11 +33,5 @@ namespace OnlineStoreBackend.Controllers
             if (!response.IsSuccess) return BadRequest(response);
             return Ok(response);
         }
-        [HttpGet("IsAdmin/{id}")]
-        public IActionResult IsAdmin(int id)
-        {
-           var res =  authRepository.IsAdmin(id);
-           return Ok(res);
-        }
     }
 }

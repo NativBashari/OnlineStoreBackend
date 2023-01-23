@@ -13,7 +13,6 @@ namespace Contracts.RepositoriesContracts.Auth
         int Register(User user, string password);
         AuthenticatedResponse Login(string userName, string password);
         bool UserExist(string username);
-        bool IsAdmin(int id);
 
     }
 }

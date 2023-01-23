@@ -36,7 +36,7 @@ namespace RepositoryPattern.Auth
             {
                 return new AuthenticatedResponse { IsSuccess = false, Message = "Password incorrect" };
             }
-                return new AuthenticatedResponse { IsSuccess = true, Message = "Authenticated seccusfully", Token = CreateToken(user) };
+                return new AuthenticatedResponse { IsSuccess = true, Message = "Authenticated seccusfully", Token = CreateToken(user), IsAdmin = user.IsAdmin };
         }
 
         public int Register(User user, string password)
@@ -98,10 +98,5 @@ namespace RepositoryPattern.Auth
             return tokenHandler.WriteToken(token);
         }
 
-        public bool IsAdmin(int id)
-        {
-            var user = dbContext.Users.FirstOrDefault(u => u.Id == id);
-            return user!.IsAdmin;
-        }
     }
 }
