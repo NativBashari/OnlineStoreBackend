@@ -16,7 +16,7 @@ namespace RepositoryPattern
         private ICategoryRepository? categoryRepository;
         private IProductRepository? productRepository;
         private IDiscountRepository? discountRepository;
-        private IInventoryRepository? inventoryRepository;
+        private ISizeRepository? sizeRepository;
         public UnitOfWork(OnlineStoreDbContext dbContext)
         {
             this.dbContext = dbContext;
@@ -40,14 +40,6 @@ namespace RepositoryPattern
             }
         }
 
-        public IInventoryRepository InventoryRepository
-        {
-            get
-            {
-                if(inventoryRepository == null) inventoryRepository = new InventoryRepository(dbContext);
-                return inventoryRepository;
-            }
-        }
 
         public ICategoryRepository CategoryRepository
         {
@@ -55,6 +47,14 @@ namespace RepositoryPattern
             {
                 if (categoryRepository == null) categoryRepository = new CategoryRepository(dbContext);
                 return categoryRepository;
+            }
+        }
+        public ISizeRepository SizeRepository
+        {
+            get
+            {
+                if (sizeRepository == null) sizeRepository = new SizeRepository(dbContext);
+                return sizeRepository;
             }
         }
 

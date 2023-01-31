@@ -6,7 +6,6 @@
         public string? Name { get; set; }
         public string?  Description { get; set; }
         public virtual Category? Category { get; set; }
-        public virtual Inventory? Inventory { get; set; }
         public double Price { get; set; }
         public virtual Discount? Discount { get; set; }
         public string? Image { get; set; }

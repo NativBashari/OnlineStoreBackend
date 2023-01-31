@@ -30,7 +30,7 @@ namespace OnlineStoreBackend.Controllers
             if(product == null) return NotFound();
             return Ok(product);
         }
-        [Authorize(Roles = "Admin")]
+       
         [HttpPost]
         public IActionResult Post(Product product)
         {

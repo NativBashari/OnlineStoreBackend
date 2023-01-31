@@ -11,8 +11,8 @@ namespace Contracts
     {
         IProductRepository ProductRepository { get; }
         IDiscountRepository DiscountRepository { get; }
-        IInventoryRepository InventoryRepository { get; }
         ICategoryRepository CategoryRepository { get; }
+        ISizeRepository SizeRepository { get; }
         void Complete();
     }
 }

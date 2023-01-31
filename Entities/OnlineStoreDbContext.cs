@@ -9,7 +9,6 @@ namespace Entities
         //PRODICTS MANAGEMENT
         public DbSet<Product> Products { get; set; }
         public DbSet<Discount> Discounts { get; set; }
-        public DbSet<Inventory> Inventories { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Size> Sizes { get; set; }
 
