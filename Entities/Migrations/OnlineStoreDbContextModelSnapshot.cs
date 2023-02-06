@@ -84,28 +84,6 @@ namespace Entities.Migrations
                     b.ToTable("Discounts");
                 });
 
-            modelBuilder.Entity("Models.ProductsManagement.Inventory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("ModifiedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Inventories");
-                });
-
             modelBuilder.Entity("Models.ProductsManagement.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -114,7 +92,7 @@ namespace Entities.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
@@ -123,14 +101,11 @@ namespace Entities.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("DiscountId")
+                    b.Property<int>("DiscountId")
                         .HasColumnType("int");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("InventoryId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("ModifiedAt")
                         .HasColumnType("datetime2");
@@ -147,12 +122,10 @@ namespace Entities.Migrations
 
                     b.HasIndex("DiscountId");
 
-                    b.HasIndex("InventoryId");
-
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("Models.ProductsManagement.Size", b =>
+            modelBuilder.Entity("Models.UserManagement.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -160,55 +133,102 @@ namespace Entities.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProductId")
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("ModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("PasswordHash")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Telephone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UserAdressId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("UserAdressId");
 
-                    b.ToTable("Sizes");
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Models.UserManagement.UserAdress", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AdressLine1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AdressLine2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserAdresses");
                 });
 
             modelBuilder.Entity("Models.ProductsManagement.Product", b =>
                 {
                     b.HasOne("Models.ProductsManagement.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Models.ProductsManagement.Discount", "Discount")
                         .WithMany()
-                        .HasForeignKey("DiscountId");
-
-                    b.HasOne("Models.ProductsManagement.Inventory", "Inventory")
-                        .WithMany()
-                        .HasForeignKey("InventoryId");
+                        .HasForeignKey("DiscountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
 
                     b.Navigation("Discount");
-
-                    b.Navigation("Inventory");
                 });
 
-            modelBuilder.Entity("Models.ProductsManagement.Size", b =>
+            modelBuilder.Entity("Models.UserManagement.User", b =>
                 {
-                    b.HasOne("Models.ProductsManagement.Product", null)
-                        .WithMany("Sizes")
-                        .HasForeignKey("ProductId");
+                    b.HasOne("Models.UserManagement.UserAdress", "UserAdress")
+                        .WithMany()
+                        .HasForeignKey("UserAdressId");
+
+                    b.Navigation("UserAdress");
                 });
 
             modelBuilder.Entity("Models.ProductsManagement.Category", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("Models.ProductsManagement.Product", b =>
-                {
-                    b.Navigation("Sizes");
                 });
 #pragma warning restore 612, 618
         }

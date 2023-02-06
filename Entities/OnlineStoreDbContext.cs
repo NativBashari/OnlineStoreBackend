@@ -1,16 +1,20 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Models.ProductsManagement;
+using Models.UserManagement;
 
 namespace Entities
 {
     public class OnlineStoreDbContext: DbContext
     {
-        //PRODICTS MANAGEMENT
+        //PRODUCTS MANAGEMENT
         public DbSet<Product> Products { get; set; }
         public DbSet<Discount> Discounts { get; set; }
-        public DbSet<Inventory> Inventories { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Size> Sizes { get; set; }
+       // public DbSet<Size> Sizes { get; set; }
+
+        //USERS MANAGEMENT
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserAdress> UserAdresses { get; set; }
 
         public OnlineStoreDbContext()
         {
@@ -24,6 +28,7 @@ namespace Entities
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
         }
     }
 }

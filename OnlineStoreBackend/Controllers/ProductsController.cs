@@ -1,10 +1,12 @@
 ﻿using Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models.ProductsManagement;
 
 namespace OnlineStoreBackend.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
@@ -28,6 +30,7 @@ namespace OnlineStoreBackend.Controllers
             if(product == null) return NotFound();
             return Ok(product);
         }
+       
         [HttpPost]
         public IActionResult Post(Product product)
         {
@@ -43,6 +46,7 @@ namespace OnlineStoreBackend.Controllers
         [HttpPut] 
         public IActionResult Update(Product product)
         {
+            if (!User.IsInRole("Admin")) return Unauthorized();
             if (ModelState.IsValid)
             {
                 unitOfWork.ProductRepository.Update(product);
@@ -54,6 +58,7 @@ namespace OnlineStoreBackend.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
+            if (!User.IsInRole("Admin")) return Unauthorized();
             unitOfWork.ProductRepository.Delete(id);
             unitOfWork.Complete();
             return NoContent();
