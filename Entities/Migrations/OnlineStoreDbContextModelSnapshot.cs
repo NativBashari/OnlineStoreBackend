@@ -46,7 +46,6 @@ namespace Entities.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -93,7 +92,7 @@ namespace Entities.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
@@ -102,7 +101,7 @@ namespace Entities.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("DiscountId")
+                    b.Property<int>("DiscountId")
                         .HasColumnType("int");
 
                     b.Property<string>("Image")
@@ -124,27 +123,6 @@ namespace Entities.Migrations
                     b.HasIndex("DiscountId");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("Models.ProductsManagement.Size", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Sizes");
                 });
 
             modelBuilder.Entity("Models.UserManagement.User", b =>
@@ -224,22 +202,19 @@ namespace Entities.Migrations
                 {
                     b.HasOne("Models.ProductsManagement.Category", "Category")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Models.ProductsManagement.Discount", "Discount")
                         .WithMany()
-                        .HasForeignKey("DiscountId");
+                        .HasForeignKey("DiscountId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
 
                     b.Navigation("Discount");
-                });
-
-            modelBuilder.Entity("Models.ProductsManagement.Size", b =>
-                {
-                    b.HasOne("Models.ProductsManagement.Product", null)
-                        .WithMany("Sizes")
-                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("Models.UserManagement.User", b =>
@@ -254,11 +229,6 @@ namespace Entities.Migrations
             modelBuilder.Entity("Models.ProductsManagement.Category", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("Models.ProductsManagement.Product", b =>
-                {
-                    b.Navigation("Sizes");
                 });
 #pragma warning restore 612, 618
         }
