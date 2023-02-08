@@ -20,7 +20,7 @@ namespace OnlineStoreBackend.Controllers
         public IActionResult Register(UserRegisterDto request)
         {
             var response = authRepository.Register(
-                new User {Username = request.Username }, request.Password!
+                new User {Username = request.Username, FirstName = request.FirstName, LastName = request.LastName, Telephone = request.Telephone, CreatedAt = request.CreatedAt}, request.Password!
                 );
             if (response == 0) return BadRequest();
             return Ok(response);
