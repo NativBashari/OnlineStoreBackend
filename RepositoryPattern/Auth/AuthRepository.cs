@@ -36,7 +36,7 @@ namespace RepositoryPattern.Auth
             {
                 return new AuthenticatedResponse { IsSuccess = false, Message = "Password incorrect" };
             }
-                return new AuthenticatedResponse { IsSuccess = true, Message = "Authenticated seccusfully", Token = CreateToken(user), IsAdmin = user.IsAdmin };
+                return new AuthenticatedResponse { IsSuccess = true, Message = "Authenticated seccusfully", Token = CreateToken(user), IsAdmin = user.IsAdmin, UserDetails = new UserDetailsDto {FirstName = user.FirstName, LastName = user.LastName, UserId = user.Id } };
         }
 
         public int Register(User user, string password)

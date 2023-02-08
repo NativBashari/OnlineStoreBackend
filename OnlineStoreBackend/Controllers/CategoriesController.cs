@@ -6,7 +6,6 @@ using Models.ProductsManagement;
 
 namespace OnlineStoreBackend.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase

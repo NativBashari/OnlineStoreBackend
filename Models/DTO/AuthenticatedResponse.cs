@@ -12,5 +12,6 @@ namespace Models.DTO
         public bool IsSuccess { get; set; }
         public string? Message { get; set; }
         public bool IsAdmin { get; set; }
+        public UserDetailsDto? UserDetails { get; set; }
     }
 }

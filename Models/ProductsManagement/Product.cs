@@ -12,7 +12,7 @@ namespace Models.ProductsManagement
         public virtual Category? Category { get; set; }
         public double Price { get; set; }
         [ForeignKey("Discount")]
-        public int DiscountId { get; set; }
+        public int? DiscountId { get; set; }
         public virtual Discount? Discount { get; set; }
         public string? Image { get; set; }
   
