@@ -21,7 +21,6 @@ namespace Models.UserManagement
         public bool IsAdmin { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime ModifiedAt { get; set; }
-        public virtual UserAdress? UserAdress { get; set; }
 
     }
 }
