@@ -4,6 +4,7 @@ using Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entities.Migrations
 {
     [DbContext(typeof(OnlineStoreDbContext))]
-    partial class OnlineStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230209122117_setForeignKeyUserAdressUserWithModelRef")]
+    partial class setForeignKeyUserAdressUserWithModelRef
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -116,16 +119,11 @@ namespace Entities.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int?>("UserCartId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("DiscountId");
-
-                    b.HasIndex("UserCartId");
 
                     b.ToTable("Products");
                 });
@@ -203,24 +201,6 @@ namespace Entities.Migrations
                     b.ToTable("UserAdresses");
                 });
 
-            modelBuilder.Entity("Models.UserManagement.UserCart", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserCarts");
-                });
-
             modelBuilder.Entity("Models.ProductsManagement.Product", b =>
                 {
                     b.HasOne("Models.ProductsManagement.Category", "Category")
@@ -232,10 +212,6 @@ namespace Entities.Migrations
                     b.HasOne("Models.ProductsManagement.Discount", "Discount")
                         .WithMany()
                         .HasForeignKey("DiscountId");
-
-                    b.HasOne("Models.UserManagement.UserCart", null)
-                        .WithMany("Products")
-                        .HasForeignKey("UserCartId");
 
                     b.Navigation("Category");
 
@@ -253,23 +229,7 @@ namespace Entities.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Models.UserManagement.UserCart", b =>
-                {
-                    b.HasOne("Models.UserManagement.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Models.ProductsManagement.Category", b =>
-                {
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("Models.UserManagement.UserCart", b =>
                 {
                     b.Navigation("Products");
                 });
