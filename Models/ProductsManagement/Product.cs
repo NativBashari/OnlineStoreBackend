@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Models.UserManagement;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Models.ProductsManagement
 {
@@ -18,6 +20,8 @@ namespace Models.ProductsManagement
   
         public DateTime CreatedAt { get; set; }
         public DateTime ModifiedAt { get; set; }
+        public virtual ICollection<UserCart>? UserCarts { get; set; } = new List<UserCart>();
+
 
     }
 }
