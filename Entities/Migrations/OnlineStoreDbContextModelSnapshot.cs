@@ -162,10 +162,15 @@ namespace Entities.Migrations
                     b.Property<string>("Telephone")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("UserCartId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserCartId");
 
                     b.ToTable("Users");
                 });
@@ -240,6 +245,17 @@ namespace Entities.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("Discount");
+                });
+
+            modelBuilder.Entity("Models.UserManagement.User", b =>
+                {
+                    b.HasOne("Models.UserManagement.UserCart", "UserCart")
+                        .WithMany()
+                        .HasForeignKey("UserCartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserCart");
                 });
 
             modelBuilder.Entity("Models.UserManagement.UserAdress", b =>

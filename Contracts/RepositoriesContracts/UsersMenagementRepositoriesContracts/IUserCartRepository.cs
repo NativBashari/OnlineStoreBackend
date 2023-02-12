@@ -9,5 +9,6 @@ namespace Contracts.RepositoriesContracts.UsersMenagementRepositoriesContracts
 {
     public interface IUserCartRepository : IGenericRepository<UserCart>
     {
+        UserCart GetByUserId(int UserId);
     }
 }

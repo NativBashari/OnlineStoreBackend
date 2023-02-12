@@ -15,5 +15,11 @@ namespace RepositoryPattern.UsersManagementRepository
         public UserCartRepository(OnlineStoreDbContext dbContext): base(dbContext)
         {
         }
+
+        public UserCart GetByUserId(int UserId)
+        {
+           var userCart = dbContext.UserCarts.FirstOrDefault(uc => uc.UserId == UserId);
+            return userCart!; 
+        }
     }
 }
