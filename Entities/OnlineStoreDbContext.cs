@@ -10,7 +10,6 @@ namespace Entities
         public DbSet<Product> Products { get; set; }
         public DbSet<Discount> Discounts { get; set; }
         public DbSet<Category> Categories { get; set; }
-       // public DbSet<Size> Sizes { get; set; }
 
         //USERS MANAGEMENT
         public DbSet<User> Users { get; set; }
@@ -29,6 +28,9 @@ namespace Entities
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<UserCart>()
+                .HasMany(uc => uc.Products)
+                .WithMany(p => p.UserCarts);
             
         }
     }
