@@ -1,4 +1,5 @@
-﻿using Models.UserManagement;
+﻿using Models.ProductsManagement;
+using Models.UserManagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace Contracts.RepositoriesContracts.UsersMenagementRepositoriesContracts
     public interface IUserCartRepository : IGenericRepository<UserCart>
     {
         UserCart GetByUserId(int UserId);
+        IEnumerable<Product> GetUserCartProducts(int userCartId);
     }
 }

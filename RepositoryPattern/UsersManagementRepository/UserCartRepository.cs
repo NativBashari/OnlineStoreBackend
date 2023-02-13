@@ -1,6 +1,8 @@
 ﻿using Contracts;
 using Contracts.RepositoriesContracts.UsersMenagementRepositoriesContracts;
 using Entities;
+using Microsoft.EntityFrameworkCore;
+using Models.ProductsManagement;
 using Models.UserManagement;
 using System;
 using System.Collections.Generic;
@@ -20,6 +22,12 @@ namespace RepositoryPattern.UsersManagementRepository
         {
            var userCart = dbContext.UserCarts.FirstOrDefault(uc => uc.UserId == UserId);
             return userCart!; 
+        }
+
+        public IEnumerable<Product> GetUserCartProducts(int userCartId)
+        {
+            var p = dbContext.UserCarts.Include(uc => uc.Products).FirstOrDefault(uc => uc.Id == userCartId);
+            return p.Products!; 
         }
     }
 }

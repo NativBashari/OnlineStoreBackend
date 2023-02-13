@@ -25,6 +25,12 @@ namespace OnlineStoreBackend.Controllers
             if(userCart == null) return NotFound();
             return Ok(userCart);
         }
+        [HttpGet("Products/UserCarts/{userCartId}")]
+        public IActionResult GetUserCartProducts(int userCartId)
+        {
+            var products = unitOfWork.UserCartRepository.GetUserCartProducts(userCartId);
+            return Ok(products);
+        }
         [HttpPost]
         public IActionResult Post(UserCart userCart)
         {
@@ -51,5 +57,7 @@ namespace OnlineStoreBackend.Controllers
             unitOfWork.Complete();
             return Created("Cart updated succesfully", userCart);
         }
+
+       
     }
 }

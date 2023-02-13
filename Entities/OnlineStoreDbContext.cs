@@ -24,7 +24,7 @@ namespace Entities
         protected override void OnConfiguring(DbContextOptionsBuilder OptionBuilder)
         {
             OptionBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=OnlineStoreDb;Trusted_Connection=True");
-            OptionBuilder.UseLazyLoadingProxies();
+           // OptionBuilder.UseLazyLoadingProxies();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

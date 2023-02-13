@@ -19,6 +19,7 @@ namespace RepositoryPattern
 
         public IEnumerable<T> GetAll() => dbContext.Set<T>().ToList();
 
-        public void Update(T obj) => dbContext.Set<T>().Update(obj);
+        public void Update(T obj) => 
+            dbContext.Set<T>().Update(obj);
     }
 }
