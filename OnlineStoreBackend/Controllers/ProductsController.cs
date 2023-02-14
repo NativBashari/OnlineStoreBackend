@@ -62,7 +62,7 @@ namespace OnlineStoreBackend.Controllers
             unitOfWork.Complete();
             return NoContent();
         }
-        [HttpGet("Producst/Category/{categoryId}")]
+        [HttpGet("Products/Category/{categoryId}")]
         public IActionResult GetProductsFromCategory(int categoryId)
         {
             var products = unitOfWork.ProductRepository.GetProductsFromCategory(categoryId);

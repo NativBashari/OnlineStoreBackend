@@ -30,8 +30,7 @@ namespace Entities
         {
             modelBuilder.Entity<UserCart>()
                 .HasMany(uc => uc.Products)
-                .WithMany(p => p.UserCarts);
-            
+                .WithMany(p => p.UserCarts);          
         }
     }
 }

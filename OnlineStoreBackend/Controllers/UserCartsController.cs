@@ -51,6 +51,9 @@ namespace OnlineStoreBackend.Controllers
             foreach (var item in userCart.Products!)
             {
                 products.Add(unitOfWork.ProductRepository.Get(item.Id));
+                item.UserCarts!.Remove(userCart);
+                item.UserCarts!.Add(userCart);
+
             }
             userCart.Products = products;
             unitOfWork.UserCartRepository.Update(userCart);
@@ -58,6 +61,15 @@ namespace OnlineStoreBackend.Controllers
             return Created("Cart updated succesfully", userCart);
         }
 
-       
+        [HttpGet("UserCarts/{userCartId}/{productId}")]
+        public IActionResult RemoveProductFromCart(int userCartId, int productId)
+        {
+            var uc = unitOfWork.UserCartRepository.Get(userCartId);
+            var product = unitOfWork.ProductRepository.Get(productId);
+            uc.Products = unitOfWork.UserCartRepository.GetUserCartProducts(userCartId).ToList();
+            uc.Products!.Remove(product);
+            unitOfWork.Complete();
+            return Ok();
+        }
     }
 }
