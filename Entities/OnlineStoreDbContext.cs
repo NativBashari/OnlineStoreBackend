@@ -24,14 +24,13 @@ namespace Entities
         protected override void OnConfiguring(DbContextOptionsBuilder OptionBuilder)
         {
             OptionBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=OnlineStoreDb;Trusted_Connection=True");
-            OptionBuilder.UseLazyLoadingProxies();
+           // OptionBuilder.UseLazyLoadingProxies();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserCart>()
                 .HasMany(uc => uc.Products)
-                .WithMany(p => p.UserCarts);
-            
+                .WithMany(p => p.UserCarts);          
         }
     }
 }
