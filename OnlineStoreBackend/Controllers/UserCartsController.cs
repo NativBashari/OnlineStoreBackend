@@ -61,13 +61,23 @@ namespace OnlineStoreBackend.Controllers
             return Created("Cart updated succesfully", userCart);
         }
 
-        [HttpGet("UserCarts/{userCartId}/{productId}")]
+        [HttpGet("RemoveFromCart/{userCartId}/{productId}")]
         public IActionResult RemoveProductFromCart(int userCartId, int productId)
         {
             var uc = unitOfWork.UserCartRepository.Get(userCartId);
             var product = unitOfWork.ProductRepository.Get(productId);
             uc.Products = unitOfWork.UserCartRepository.GetUserCartProducts(userCartId).ToList();
             uc.Products!.Remove(product);
+            unitOfWork.Complete();
+            return Ok(); //Work good!
+        }
+        [HttpGet("AddToCart/{userCartId}/{productId}")]
+        public IActionResult AddProductToCart(int userCartId, int productId)
+        {
+            var uc = unitOfWork.UserCartRepository.Get(userCartId);
+            var product = unitOfWork.ProductRepository.Get(productId);
+            uc.Products = unitOfWork.UserCartRepository.GetUserCartProducts(userCartId).ToList();
+            uc.Products.Add(product);
             unitOfWork.Complete();
             return Ok();
         }
